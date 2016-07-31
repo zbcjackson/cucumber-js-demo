@@ -1,0 +1,17 @@
+{
+  "name": "cucumber-js-demo",
+  "version": "1.0.0",
+  "description": "Cucumber.js Demo",
+  "main": "index.js",
+  "devDependencies": {
+    "chai": "^3.5.0",
+    "cucumber": "^1.2.1",
+    "sanitize-filename": "^1.6.0",
+    "selenium-webdriver": "^2.53.3"
+  },
+  "scripts": {
+    "test": "cucumber.js"
+  },
+  "author": "Jackson Zhang",
+  "license": "ISC"
+}
