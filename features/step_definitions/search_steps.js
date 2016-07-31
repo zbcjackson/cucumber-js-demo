@@ -4,7 +4,7 @@ module.exports = function() {
   this.When(/^search "([^"]*)"$/, function (keyword) {
     this.driver.get("http://www.baidu.com");
     this.driver.findElement({id:'kw'}).sendKeys(keyword);
-    return this.driver.findElement({id:'su'}).click();
+    return this.driver.findElement({id:'kw'}).sendKeys(this.webdriver.Key.ENTER);
   });
 
   this.Then(/^I can see "([^"]*)"$/, function (text) {

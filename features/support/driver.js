@@ -25,12 +25,24 @@ var buildFirefoxDriver = function() {
     build();
 };
 
+var buildPhantomDriver = function() {
+  return new webdriver.Builder()
+    .withCapabilities(webdriver.Capabilities.phantomjs())
+    .build();
+}
+
 switch(platform) {
   case 'ANDROID':
     var driver = buildAndroidDriver();
     break;
   case 'FIREFOX':
     var driver = buildFirefoxDriver();
+    break;
+  case 'CHROME':
+    var driver = buildChromeDriver();
+    break;
+  case 'PHANTOM':
+    var driver = buildPhantomDriver();
     break;
   default:
     var driver = buildChromeDriver();
