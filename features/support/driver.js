@@ -1,4 +1,4 @@
-var webdriver = require('selenium-webdriver');
+import webdriver from 'selenium-webdriver'
 var platform = process.env.PLATFORM || "CHROME";
 
 var buildAndroidDriver = function() {
@@ -6,9 +6,11 @@ var buildAndroidDriver = function() {
     usingServer('http://localhost:4723/wd/hub').
     withCapabilities({
       platformName: 'Android',
-      platformVersion: '4.4',
+      platformVersion: '5.0',
       deviceName: 'Android Emulator',
-      browserName: 'Chrome'
+      browserName: 'android',
+      appPackage: 'com.streamingapp',
+      appActivity: '.MainActivity'
     }).
     build();
 };
