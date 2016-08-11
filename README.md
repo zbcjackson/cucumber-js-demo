@@ -2,4 +2,6 @@
 
 Run cucumber test
 =================
-| npm test
+```
+npm test
+```
