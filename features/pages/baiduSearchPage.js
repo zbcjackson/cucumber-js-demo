@@ -7,7 +7,7 @@ export default class BaiduSearchPage {
     this.defaultTimeout = 20000
   }
   open(){
-    driver.get("http://www.baidu.com")
+    return driver.get("http://www.baidu.com")
   }
   search(keyword){
     driver.findElement({id:'kw'}).sendKeys(keyword)

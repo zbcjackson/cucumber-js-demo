@@ -1,4 +1,5 @@
 import webdriver from 'selenium-webdriver'
+import { Options as ChromeOptions} from 'selenium-webdriver/chrome'
 var platform = process.env.PLATFORM || "CHROME";
 
 var buildAndroidDriver = function() {
@@ -15,9 +16,24 @@ var buildAndroidDriver = function() {
     build();
 };
 
+var buildiOSDriver = function() {
+  return new webdriver.Builder().
+    usingServer('http://localhost:4723/wd/hub').
+    withCapabilities({
+      platformName: 'iOS',
+      platformVersion: '9.3',
+      deviceName: 'iPhone Simulator',
+      browserName: 'iOS',
+      app: '/Users/zbcjackson/src/cordova-demo/platforms/ios/build/emulator/HelloWorld.app'
+    }).
+    build();
+};
+
 var buildChromeDriver = function() {
+  var options = new ChromeOptions().setChromeBinaryPath("/usr/local/Caskroom/google-chrome/latest/Google Chrome.app/Contents/MacOS/Google Chrome")
   return new webdriver.Builder().
     withCapabilities(webdriver.Capabilities.chrome()).
+    setChromeOptions(options).
     build();
 };
 
@@ -45,6 +61,9 @@ switch(platform) {
     break;
   case 'PHANTOM':
     var driver = buildPhantomDriver();
+    break;
+  case 'IOS':
+    var driver = buildiOSDriver();
     break;
   default:
     var driver = buildChromeDriver();
